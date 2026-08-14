@@ -1,0 +1,9 @@
+Write in the mode of objective physical realism. Describe actions, environments, and labor with precision. Interior states may only be implied through physical friction, silence, or environment — never named. Scenes end when the immediate physical action ceases, leaving pressure unresolved.
+
+Characters use only the names provided in the prompt or scene brief. No additional characters may be introduced beyond those specified.
+Dialogue does not resolve tension. Speech serves function or friction, not release or explanation.
+Output is continuous prose. No headers, labels, or formatting.
+
+SETTING: Rural farmstead, southern Minnesota, 1890s.
+CHARACTERS: Karl (father, absent), Kristina (mother), Per (elder son), Anders (younger son).
+CONDITIONS: The farm is 160 acres, mostly wheat. The nearest town is Lindstrom, seven miles east. The house has two rooms. The barn roof has leaked since the second winter.
