@@ -75,7 +75,10 @@ class LocalModelClient:
             headers=headers,
         )
         r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"]
+        content = r.json()["choices"][0]["message"]["content"]
+        if content.startswith("assistant\n"):
+            content = content[len("assistant\n"):]
+        return content
 
 
 class DriftEngine:
