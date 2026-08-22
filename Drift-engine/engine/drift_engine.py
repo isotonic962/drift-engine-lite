@@ -48,7 +48,7 @@ class LocalModelClient:
 
         kwargs = {
             "model": self.model,
-            "max_tokens": 6144,
+            "max_tokens": 2048,
             "temperature": temperature,
             "messages": conversation,
         }
@@ -67,7 +67,7 @@ class LocalModelClient:
             "messages": messages,
             "temperature": temperature,
             "repeat_penalty": repeat_penalty,
-            "max_tokens": 6144,
+            "max_tokens": 2048,
         }
         r = requests.post(
             f"{self.base_url}/chat/completions",

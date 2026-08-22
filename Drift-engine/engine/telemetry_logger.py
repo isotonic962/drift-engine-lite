@@ -41,6 +41,7 @@ class TelemetryLogger:
                 figurative_density REAL,
                 action_pct REAL,
                 interiority_pct REAL,
+                neutral_pct REAL,
                 dialogue_density REAL,
                 sentence_rhythm REAL,
                 prompt_echo REAL
@@ -61,9 +62,9 @@ class TelemetryLogger:
                 timestamp, user_prompt, final_output,
                 sentiment_raw, volatility_raw, entropy_raw,
                 drift_score, engine_state, mode,
-                figurative_density, action_pct, interiority_pct,
+                figurative_density, action_pct, interiority_pct, neutral_pct,
                 dialogue_density, sentence_rhythm, prompt_echo
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             timestamp, prompt, output,
             None, None, analysis.get("entropy", 0.0),
@@ -71,6 +72,7 @@ class TelemetryLogger:
             texture.get("figurative_density", 0) if texture else 0,
             texture.get("action_pct", 0) if texture else 0,
             texture.get("interiority_pct", 0) if texture else 0,
+            texture.get("neutral_pct", 0) if texture else 0,
             texture.get("dialogue_density", 0) if texture else 0,
             texture.get("sentence_rhythm", 0) if texture else 0,
             texture.get("prompt_echo", 0) if texture else 0

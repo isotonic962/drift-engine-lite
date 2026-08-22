@@ -10,7 +10,7 @@ client = LocalModelClient()
 engine = DriftEngine(model_client=client)
 logger = TelemetryLogger()
 texture_analyzer = TextureAnalyzer()
-memory = MemoryWindow(size=5)
+memory = MemoryWindow(size=3)
 
 
 def run_drift_pipeline(user_input, anchor_text, scene_counter=None):
