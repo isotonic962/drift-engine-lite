@@ -29,8 +29,12 @@ class TextureAnalyzer:
         self.physical_verbs = PHYSICAL_VERBS
 
     def _split_sentences(self, text):
-        raw = re.split(r'(?<=[.!?])\s+(?=[A-Z])', text)
-        return [s.strip() for s in raw if s.strip()]
+        # Lookahead includes curly open quote (dialogue starts), and a
+        # min-length filter (>2 words) drops fragments that were skewing
+        # sentence-level classification. See drift.py docstring for the
+        # 16-chapter recalibration this patch was verified against.
+        raw = re.split(r'(?<=[.!?])\s+(?=[A-Z\u201c])', text)
+        return [s.strip() for s in raw if s.strip() and len(s.split()) > 2]
 
     def _tokenize(self, text):
         return re.findall(r'\w+', text.lower())

@@ -1,44 +1,47 @@
 class DriftScorer:
     """
-    Scores drift as deviation from the Moberg texture profile,
-    calibrated on p10-p90 range across 10 real chapters.
+    Scores drift as deviation from the Moberg texture profile.
+
+    Corridors derived from p10-p90 across 16 full chapters of The Emigrants
+    (clean digital PDF), measured with the original lexicon.py PHYSICAL_VERBS
+    set and a patched _split_sentences() (curly-quote lookahead + min-length
+    filter -- see texture.py). Verified against verify_scorer's hand-checked
+    passages. Residual action_pct/interiority_pct delta (~9pp/4pp) vs
+    verify_scorer is expected: verify_scorer's entries are short hand-picked
+    passages, not full chapters -- not a classifier bug, no further action
+    needed on that gap. Re-validate once real Qwen3-14B generation output
+    exists (Kaggle run) -- these corridors have not yet been checked against
+    actual model output, only against real Moberg prose.
 
     All texture metrics are corridor-scored: penalize only when a
     chapter falls outside Moberg's own observed range for that metric.
-    Interiority was originally treated as a one-sided ceiling, but a
-    10-chapter sample shows it swings 0-17% by scene type (introspective
-    chapters run high) -- so it's now a corridor like everything else.
 
     Figurative density remains the one true one-sided metric: Moberg's
-    own max across 10 chapters is 0.17, and there's no scene type where
+    own p90 across 16 chapters is 0.15, and there's no scene type where
     heavy figurative language is expected, so anything meaningfully
     above that ceiling is a real anchor violation, not scene variance.
 
-    Corridors derived from p10-p90 across 10 chapters:
-        action_pct:       19.5 - 38.7
-        dialogue_density:  2.2 - 15.1
-        neutral_pct:      56.8 - 75.0
-        sentence_rhythm:   8.4 - 15.2
-        interiority_pct:   0.0 - 17.0  (floor=0: anchor wants less interiority, never more)
+    Prior corridors (10-chapter sample, pre-lexicon-fix) are superseded.
+    The old neutral_pct corridor in particular was measuring a lexicon bug:
+    an earlier benchmark pass had misclassified speech/perception verbs
+    (said, told, asked, looked...) as physical action, which collapsed
+    neutral_pct and inflated action_pct. Fixed by keeping lexicon.py's
+    original ~80-verb PHYSICAL_VERBS set untouched.
 
-    ch4 (0% dialogue) and ch5 (17% action) score nonzero -- accepted as noise.
-    Both fall well under the stable threshold of 5.4. Do not patch corridors
-    to zero them out; that is curve-fitting, not calibration.
-
-    Entropy floor set from per-chapter observed minimum (7.29),
-    not the full-book figure (9.58) which is not comparable.
+    Entropy floor set from the 16-chapter p10 (8.05); both old and new
+    sentence-splitter classifiers agree on this within noise.
     """
 
     CORRIDORS = {
-        "action_pct":       (19.5, 38.7),
-        "dialogue_density": (2.2,  15.1),
-        "neutral_pct":      (56.8, 75.0),
-        "sentence_rhythm":  (8.4,  15.2),
-        "interiority_pct":  (0.0,  17.0),
+        "action_pct":       (17.0, 27.0),
+        "dialogue_density": (0.5,  20.0),
+        "neutral_pct":      (65.0, 75.0),
+        "sentence_rhythm":  (9.4,  12.0),
+        "interiority_pct":  (7.0,  12.0),
     }
 
     ONE_SIDED = {
-        "figurative_density": 0.17,
+        "figurative_density": 0.15,
     }
 
     WEIGHTS = {
@@ -50,7 +53,7 @@ class DriftScorer:
         "sentence_rhythm":    0.2,
     }
 
-    ENTROPY_FLOOR = 7.29
+    ENTROPY_FLOOR = 8.05
 
     def __init__(self):
         pass
