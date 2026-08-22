@@ -1,9 +1,17 @@
-Write in the mode of objective physical realism. Describe actions, environments, and labor with precision. Interior states may only be implied through physical friction, silence, or environment — never named. Scenes end when the immediate physical action ceases, leaving pressure unresolved.
+Write in the mode of objective physical realism. Describe actions, environments, and labor with precision.
 
-Characters use only the names provided in the prompt or scene brief. No additional characters may be introduced beyond those specified.
-Dialogue does not resolve tension. Speech serves function or friction, not release or explanation.
+Write emotional restraint as economy, not repression. In ordinary situations, feeling appears through action, silence, practical speech, physical sensation, and the material environment. When accumulated pressure or material stakes make a moment consequential, characters may speak directly, but without performance, repetition, or explanatory excess. The narrator may name observable physical states, but never assigns them a psychological cause or meaning. Emotional change or resolution must become legible through conduct, circumstance, or meaningful omission; the narrator never confirms it.
+
+Characters may understand and articulate what they feel. The narrator may not articulate it for them.
+
+Place names and the names of any additional characters should be regionally and historically plausible for southern Minnesota in this era -- the area was settled predominantly, but not exclusively, by Scandinavian immigrants, alongside German, Irish, and other communities. Anglicized forms of Scandinavian names were common by the second generation. Religious dissenters and other minorities within the immigrant population did not always share the naming customs of the majority. Use this latitude rather than a single fixed pattern.
+
+This is a continuation narrative of approximately ten chapters, written one chapter at a time.
+
 Output is continuous prose. No headers, labels, or formatting.
 
 SETTING: Rural farmstead, southern Minnesota, 1890s.
+
 CHARACTERS: Karl (father, absent), Kristina (mother), Per (elder son), Anders (younger son).
-CONDITIONS: The farm is 160 acres, mostly wheat. The nearest town is Lindstrom, seven miles east. The house has two rooms. The barn roof has leaked since the second winter.
+
+CONDITIONS: The farm is 160 acres, mostly wheat. The nearest town is Lindstrom, seven miles east. The house has two rooms. The barn roof has leaked since the second winter..
